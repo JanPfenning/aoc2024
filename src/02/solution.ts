@@ -41,3 +41,17 @@ export const isSafeIncrease = (prev: number, curr: number) => {
 export const getSafeLines = (input: PuzzleInput) => {
     return input.map((line) => isSafe(line));
 };
+
+function getAllArraysWithOneElementRemoved(arr: number[]): number[][] {
+    return arr.map((_, i) => arr.slice(0, i).concat(arr.slice(i + 1)));
+}
+
+export const isSafeWithRemoval = (line: number[]): boolean => {
+    if (isSafe(line)) return true;
+    const alternativeLines = getAllArraysWithOneElementRemoved(line);
+    return alternativeLines.some((line) => isSafe(line));
+};
+
+export const getSafeLinesWithRemoval = (input: PuzzleInput): boolean[] => {
+    return input.map((line) => isSafeWithRemoval(line));
+};

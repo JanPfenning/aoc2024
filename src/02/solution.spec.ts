@@ -1,5 +1,12 @@
 import { readFile } from 'fs/promises';
-import { getSafeLines, isSafe, isSafeDecrease, isSafeIncrease, parseRawData } from './solution';
+import {
+    getSafeLines,
+    getSafeLinesWithRemoval,
+    isSafe,
+    isSafeDecrease,
+    isSafeIncrease,
+    parseRawData,
+} from './solution';
 
 describe('Day 2', () => {
     const exampleInput = [
@@ -20,6 +27,10 @@ describe('Day 2', () => {
 
     it('should get solution for example', () => {
         expect(getSafeLines(exampleInput)).toMatchObject([true, false, false, false, false, true]);
+    });
+
+    it('should get solution for example part 2', () => {
+        expect(getSafeLinesWithRemoval(exampleInput)).toMatchObject([true, false, false, true, true, true]);
     });
 
     describe('isSafe', () => {
@@ -86,5 +97,14 @@ describe('Day 2', () => {
         const result = safetyInfoLines.reduce((acc, iter) => acc + (iter ? 1 : 0), 0);
         expect(result).toBeLessThan(606);
         expect(result).toBe(598);
+    });
+
+    it('get solution part 2', async () => {
+        const raw = await readFile('src/02/puzzle_input.txt', 'utf8');
+        const parsed = parseRawData(raw);
+        const safetyInfoLines = getSafeLinesWithRemoval(parsed);
+        const result = safetyInfoLines.reduce((acc, iter) => acc + (iter ? 1 : 0), 0);
+        expect(result).toBeGreaterThan(598);
+        expect(result).toBe(634);
     });
 });
