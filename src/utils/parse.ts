@@ -9,3 +9,6 @@ export const asManyCharSeperatedLists = (seperator: string, rawInput: string) =>
 export const asManyCharSeperatedNumberLists = (seperator: string, rawInput: string): number[][] => {
     return rawInput.split(/\n/g).map((line) => line.split(seperator).map((val) => +val));
 };
+
+export const asSingleDigitLine = (rawInput: string) => asSingleNumberLine('', rawInput);
+export const asSingleNumberLine = (seperator: string, rawInput: string) => rawInput.split(seperator).map((val) => +val);
