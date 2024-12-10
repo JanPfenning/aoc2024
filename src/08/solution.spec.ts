@@ -42,6 +42,6 @@ describe('Day 8', () => {
         const input = await readFile('src/08/puzzle_input.txt', 'utf8');
         const parsed = parseRawData(input);
         const result = getAllAntinodes(parsed, true);
-        expect(result.length).toBe(34);
+        expect(result.length).toBe(1134);
     });
 });
