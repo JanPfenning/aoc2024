@@ -1,5 +1,6 @@
 import { asDigitMatrix } from '../utils/parse';
 import { sum } from '../utils/reduce';
+import { isUniqueTuple } from '../utils/filter';
 
 export type PuzzleInput = number[][];
 
@@ -60,6 +61,3 @@ export const getSumOfllScores = (grid: PuzzleInput, filterUnique = true): number
     const trailheads = getTrailheads(grid);
     return trailheads.map((trailhead) => getScoreOfTrailhead(trailhead, grid, filterUnique)).reduce(sum);
 };
-
-const isUniqueTuple = (tuple: [number, number], index: number, self: [number, number][]) =>
-    index === self.findIndex((t) => t[0] === tuple[0] && t[1] === tuple[1]);

@@ -1,3 +1,4 @@
+import { isUniqueTuple } from '../utils/filter';
 import { asCharMatrix } from '../utils/parse';
 import { range } from '../utils/range';
 
@@ -111,6 +112,3 @@ const drawAntinodes = (grid: PuzzleInput, antinodeLocations: Vector[], overrideA
             .join('\n')
     );
 };
-
-const isUniqueTuple = (tuple: [number, number], index: number, self: [number, number][]) =>
-    index === self.findIndex((t) => t[0] === tuple[0] && t[1] === tuple[1]);
