@@ -1,3 +1,4 @@
+type Seperator = string | RegExp;
 export const asCharMatrix = (rawInput: string): string[][] => {
     return asManyCharSeperatedLists('', rawInput);
 };
@@ -6,11 +7,11 @@ export const asDigitMatrix = (rawInput: string): number[][] => {
     return asManyCharSeperatedNumberLists('', rawInput);
 };
 
-export const asManyCharSeperatedLists = (seperator: string, rawInput: string) => {
+export const asManyCharSeperatedLists = (seperator: Seperator, rawInput: string) => {
     return rawInput.split(/\n/g).map((line) => line.split(seperator));
 };
 
-export const asManyCharSeperatedNumberLists = (seperator: string, rawInput: string): number[][] => {
+export const asManyCharSeperatedNumberLists = (seperator: Seperator, rawInput: string): number[][] => {
     return rawInput.split(/\n/g).map((line) => line.split(seperator).map((val) => +val));
 };
 
