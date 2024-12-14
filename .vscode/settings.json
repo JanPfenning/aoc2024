@@ -9,5 +9,8 @@
     "[typescript]": {
         "editor.formatOnSave": true
     },
-    "prettier.tabWidth": 4
+    "prettier.tabWidth": 4,
+    "jest.runMode": {
+        "type": "on-demand"
+    }
 }
