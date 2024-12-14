@@ -88,3 +88,7 @@ export const floodfill = <T extends GridContent>(
 export const findUniqueElements = <T extends GridContent>(grid: Grid<T>): Set<T> => {
     return new Set(grid.flat(2) as T[]);
 };
+
+export const addVectors = (vecA: Coordinate2D, vecB: Coordinate2D): Coordinate2D => {
+    return [vecA[0] + vecB[0], vecA[1] + vecB[1]];
+};
