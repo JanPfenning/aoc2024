@@ -2,6 +2,7 @@ node_modules
 coverage
 dist
 *.txt
+*.data.json
 
 target
 Cargo.lock
