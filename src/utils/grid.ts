@@ -92,3 +92,57 @@ export const findUniqueElements = <T extends GridContent>(grid: Grid<T>): Set<T>
 export const addVectors = (vecA: Coordinate2D, vecB: Coordinate2D): Coordinate2D => {
     return [vecA[0] + vecB[0], vecA[1] + vecB[1]];
 };
+
+export const rotate = <T extends GridContent>(grid: Grid<T>, n: number = 1): Grid<T> => {
+    if (grid.length === 0 || grid[0].length === 0) return [];
+
+    n = ((n % 4) + 4) % 4;
+    if (n === 0) return grid;
+
+    const rows = grid.length;
+    const cols = grid[0].length;
+
+    const rotate90Degrees = () => {
+        const rotated = Array(cols)
+            .fill(null)
+            .map(() => Array(rows).fill(''));
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                rotated[j][rows - 1 - i] = grid[i][j];
+            }
+        }
+        return rotated;
+    };
+
+    let result = grid;
+    for (let i = 0; i < n; i++) {
+        result = rotate90Degrees();
+        grid = result;
+    }
+
+    return result;
+};
+
+export const rotateCoordinate = <T extends GridContent>(
+    grid: Grid<T>,
+    coordinate: [number, number],
+    n: number = 1
+): [number, number] => {
+    if (grid.length === 0 || grid[0].length === 0) {
+        throw new Error('Grid is empty');
+    }
+
+    n = ((n % 4) + 4) % 4;
+    if (n === 0) return coordinate;
+
+    let rows = grid.length;
+    let cols = grid[0].length;
+    let [row, col] = coordinate;
+
+    for (let i = 0; i < n; i++) {
+        [row, col] = [col, rows - 1 - row];
+        [rows, cols] = [cols, rows];
+    }
+
+    return [row, col];
+};
