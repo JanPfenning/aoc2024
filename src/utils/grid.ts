@@ -2,6 +2,7 @@ export type GridContent = string | number | symbol;
 export type Grid<T extends GridContent> = T[][];
 
 export type Coordinate2D = [number, number];
+export type StringOfCoordinate = `[${number},${number}]`;
 
 export const getAdjacentcyInformation = <T extends GridContent>(
     base: Coordinate2D,
