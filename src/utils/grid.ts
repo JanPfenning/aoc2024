@@ -147,3 +147,19 @@ export const rotateCoordinate = <T extends GridContent>(
 
     return [row, col];
 };
+
+export const cloneGrid = <T extends GridContent>(grid: Grid<T>): Grid<T> => {
+    return grid.map((row) => [...row]);
+};
+
+export const uniquePathsFilter = (() => {
+    const seen = new Set<string>();
+    return (path: [number, number][]): boolean => {
+        const pathString = path.map(([x, y]) => `${x},${y}`).join('|');
+        if (seen.has(pathString)) {
+            return false;
+        }
+        seen.add(pathString);
+        return true;
+    };
+})();
