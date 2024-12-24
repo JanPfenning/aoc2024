@@ -2,7 +2,7 @@ import { readFile } from 'fs/promises';
 import { bronKerbosch, findGroupsOfThree, parseRawData } from './solution';
 import { lexicographical } from '../utils/sort';
 
-describe('Day 22', () => {
+describe('Day 23', () => {
     describe('part 1', () => {
         describe('example', () => {
             const file = 'src/23/example_input.txt';
